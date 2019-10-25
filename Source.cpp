@@ -142,7 +142,6 @@ void playagian()
 	}
 }
 
-//void checkUserGuss(int gussValue,int randomValue, int wonCounts, int lostCounts)
 int main()
 {
 	//variable declartions
