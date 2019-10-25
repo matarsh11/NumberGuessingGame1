@@ -67,31 +67,31 @@ void losses()
 		cout << "Sorry you lost " << endl;
 		break;
 	case 2:
-		cout << "Sorry you lost the game" << endl;
+		cout << "Regretful! you lost the game" << endl;
 		break;
 	case 3:
-		cout << "Sorry you lost the game" << endl;
+		cout << "my littel sister is better than you! you lost the game" << endl;
 		break;
 	case 4:
-		cout << "Sorry you lost the game" << endl;
+		cout << "hahahahah  you lost the game" << endl;
 		break;
 	case 5:
-		cout << "Sorry you lost the game" << endl;
+		cout << "practice and come back! you lost the game" << endl;
 		break;
 	case 6:
-		cout << "Sorry you lost the game" << endl;
+		cout << "you are so bad! you lost the game" << endl;
 		break;
 	case 7:
-		cout << "Sorry you lost the game" << endl;
+		cout << "Not good enough! Sorry you lost the gamen" << endl;
 		break;
 	case 8:
-		cout << "Sorry you lost the game" << endl;
+		cout << "you tried! but sorry you lost the game" << endl;
 		break;
 	case 9:
-		cout << "Sorry you lost the game" << endl;
+		cout << "Sorry better luck next time" << endl;
 		break;
 	case 10:
-		cout << "Sorry you lost the game" << endl;
+		cout << "Next time be smart! sorry you lost the  game" << endl;
 		break;
 	}
 }
@@ -110,34 +110,34 @@ void playagian()
 	switch (randomWin)
 	{
 	case 1:
-		cout << "do you want to play agian press 'y' or 'Y' ? " << endl;
+		cout << "I challenge you to play again! if you want to play press 'y' or 'Y' ? " << endl;
 		break;
 	case 2:
-		cout << "do you want to play agian press 'y' or 'Y' ? " << endl;
+		cout << "do you want to play again? if yes press 'y' or 'Y' ? " << endl;
 		break;
 	case 3:
-		cout << "do you want to play agian press 'y' or 'Y' ? " << endl;
+		cout << "do you want to continue? if yes press 'y' or 'Y' ? " << endl;
 		break;
 	case 4:
-		cout << "do you want to play agian press 'y' or 'Y' ? " << endl;
+		cout << "Once more? if yes press 'y' or 'Y' ? " << endl;
 		break;
 	case 5:
-		cout << "do you want to play agian press 'y' or 'Y' ? " << endl;
+		cout << "Are you thinking to play agian? if yes 'y' or 'Y' ? " << endl;
 		break;
 	case 6:
-		cout << "do you want to play agian press 'y' or 'Y' ? " << endl;
+		cout << "Can you play again? if yes press 'y' or 'Y' ? " << endl;
 		break;
 	case 7:
-		cout << "do you want to play agian press 'y' or 'Y' ? " << endl;
+		cout << "Can you prove your talent again? if yes press 'y' or 'Y' ? " << endl;
 		break;
 	case 8:
-		cout << "do you want to play agian press 'y' or 'Y' ? " << endl;
+		cout << "I know you are bad but do you want to play again? if yes press 'y' or 'Y' ? " << endl;
 		break;
 	case 9:
-		cout << "do you want to play agian press 'y' or 'Y' ? " << endl;
+		cout << "Try again? if yes press 'y' or 'Y' ? " << endl;
 		break;
 	case 10:
-		cout << "do you want to play agian press 'y' or 'Y' ? " << endl;
+		cout << "Do you want to play this game again? if yes press 'y' or 'Y' ? " << endl;
 		break;
 	}
 }
@@ -155,40 +155,46 @@ int main()
 	srand(time(NULL));
 
 	randomValue = rand() % 100; //select a random number in the range of 0 and 100
-	cout << "Guess the random number" << endl;
+	cout << "Guess a random number between 0 to 100" << endl;
+	cout << "And you will have 20 try!" << endl;
 	do
 	{
 		
 		cout << "Attempt" << attempts << ": "; //prompt the user gussing number
 		cin >> gussValue;
-		if (gussValue == randomValue) //if the user choose the right number
+		if (!cin)
 		{
-			wonCounts++;//count the number of wins
-			wining(); //function call to print win messages
-			cout << "The computer generated random number: " << randomValue << endl;
+			cout << "i told you to choose between 0 and 100 ... see you next time" << endl;
+			return 1;
 		}
-		else
-		{
-			attempts++; // incremet the attempts
-		}
-		if (attempts == 21) //display a random message when the user lost the game*/
-		{
-			lostCounts++; //count the number of losses
-			losses(); //function call
-			cout << "The computer generated random number:" << randomValue << endl;
-		}
-		if (attempts >= 21)
-		{
-			playagian(); //function call
-			cout << "if you don't want to play agian press 'E' " << endl;
-			cin >> ch;
-			if (ch == 'y' || ch == 'Y')
+			if (gussValue == randomValue) //if the user choose the right number
 			{
-				randomValue = (rand() % 100);
-				cout << "Guess the random number " << endl;
-				attempts = 1;
+				wonCounts++;//count the number of wins
+				wining(); //function call to print win messages
+				cout << "The computer generated random number: " << randomValue << endl;
 			}
-		}
+			else
+			{
+				attempts++; // incremet the attempts
+			}
+			if (attempts == 21) //display a random message when the user lost the game*/
+			{
+				lostCounts++; //count the number of losses
+				losses(); //function call
+				cout << "The computer generated random number:" << randomValue << endl;
+			}
+			if (attempts >= 21)
+			{
+				playagian(); //function call
+				cout << "if you don't want to play agian press 'E' " << endl;
+				cin >> ch;
+				if (ch == 'y' || ch == 'Y')
+				{
+					randomValue = (rand() % 100);
+					cout << "Guess a random number between 0 to 100 " << endl;
+					attempts = 1;
+				}
+			}
 	} while (ch == 'y' || ch == 'Y');
 
 	result(wonCounts,lostCounts); //call function to display the results
